@@ -13,14 +13,15 @@
 
   Runs on the Windows PowerShell 5.1 and WPF built into Windows. Nothing to install.
   Settings are kept in %APPDATA%\CATool\settings.json; errors go to error.log there.
-  Start it with "Start CA Tool.cmd".
+  Normally started from CA-Tool.exe (this script embedded in a small launcher; see
+  build.ps1). It also runs directly: powershell -STA -File CATool.ps1
 
   Keep this file plain ASCII: Windows PowerShell 5.1 misreads non-ASCII in files
   saved without a byte-order mark.
 #>
 
 $ErrorActionPreference = 'Stop'
-$script:Version = '1.0.0'
+$script:Version = '1.1.0'
 
 $script:DataDir      = Join-Path $env:APPDATA 'CATool'
 $script:SettingsPath = Join-Path $script:DataDir 'settings.json'

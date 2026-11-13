@@ -9,20 +9,19 @@ window shows the X-ray or CBCT scan, so it works with any viewer.
 ## Download and run
 
 1. Go to the **[latest release](https://github.com/grungenut/ca-tool/releases/latest)** and
-   download **`CA-Tool.zip`**.
-2. Right-click the zip, choose **Extract All…**, and pick a folder (for example your
-   Desktop or Documents).
-3. Open the extracted folder and double-click **`Start CA Tool.cmd`**.
+   download **`CA-Tool.exe`**.
+2. Double-click it. That's it: there is no installer and nothing else to download. You
+   can keep the file anywhere (Desktop, Documents, a USB stick).
 
 **If Windows shows a warning** the first time: this is normal for programs downloaded
-from the internet.
+from the internet that aren't from a large publisher.
 - *"Windows protected your PC"* → click **More info**, then **Run anyway**.
 - *"Open File – Security Warning"* → click **Run**.
 
-To skip these warnings for good: before extracting, right-click the zip → **Properties**
-→ tick **Unblock** → **OK**.
+To skip these warnings for good: right-click `CA-Tool.exe` → **Properties** → tick
+**Unblock** → **OK**.
 
-To remove the tool, delete the folder. Saved preferences are in `%APPDATA%\CATool`;
+To remove the tool, delete the file. Saved preferences are in `%APPDATA%\CATool`;
 delete that folder too if you want them gone.
 
 ## Use it
@@ -54,6 +53,19 @@ delete that folder too if you want them gone.
 
 The tool never reads, saves, or sends the image or any patient information. It only
 knows where you clicked, and it does not connect to the internet.
+
+## For developers
+
+The tool itself is `CATool.ps1` (Windows PowerShell + WPF). `CA-Tool.exe` is a small
+launcher with that script embedded, built by `build.ps1` using only what ships with
+Windows:
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1
+```
+
+You can also run the script directly:
+`powershell -NoProfile -ExecutionPolicy Bypass -STA -File CATool.ps1`
 
 ## License
 
