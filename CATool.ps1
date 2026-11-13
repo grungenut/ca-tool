@@ -9,7 +9,7 @@
     points make circle 2. The set's result is the average of the two diameters.
   - The distance between the two C outside points is taken as a known length
     (55 mm by default, adjustable) to convert screen distance into millimeters.
-  - Ratio = C average diameter / A average diameter (no units).
+  - Ratio shown as 1:X, with C set to 1 and X = A average diameter / C average diameter.
 
   Runs on the Windows PowerShell 5.1 and WPF built into Windows. Nothing to install.
   Settings are kept in %APPDATA%\CATool\settings.json; errors go to error.log there.
@@ -21,7 +21,7 @@
 #>
 
 $ErrorActionPreference = 'Stop'
-$script:Version = '1.1.0'
+$script:Version = '1.2.0'
 
 $script:DataDir      = Join-Path $env:APPDATA 'CATool'
 $script:SettingsPath = Join-Path $script:DataDir 'settings.json'
@@ -298,7 +298,7 @@ namespace CATool {
         <TextBlock Grid.Row="0" Grid.Column="1" x:Name="ValC" FontWeight="Bold" Text="&#x2014;"/>
         <TextBlock Grid.Row="1" Text="A average diameter" Margin="0,4,0,0"/>
         <TextBlock Grid.Row="1" Grid.Column="1" x:Name="ValA" FontWeight="Bold" Text="&#x2014;" Margin="0,4,0,0"/>
-        <TextBlock Grid.Row="2" Text="Ratio  C &#x00F7; A" Margin="0,4,0,0"/>
+        <TextBlock Grid.Row="2" Text="Ratio  C/A" Margin="0,4,0,0"/>
         <TextBlock Grid.Row="2" Grid.Column="1" x:Name="ValR" FontWeight="Bold" Text="&#x2014;" Margin="0,4,0,0"/>
       </Grid>
     </Border>
@@ -770,7 +770,7 @@ function Update-Toolbox($Results) {
     elseif ($null -eq $mmPerUnit) { $ui.ValA.Text = 'needs C' }
     else { $ui.ValA.Text = Format-Length ($ra.AvgDiam * $mmPerUnit) }
 
-    if ($rc -and $ra -and $rc.AvgDiam -and $ra.AvgDiam) { $ui.ValR.Text = '{0:N3}' -f ($rc.AvgDiam / $ra.AvgDiam) }
+    if ($rc -and $ra -and $rc.AvgDiam -and $ra.AvgDiam) { $ui.ValR.Text = '1:{0:N3}' -f ($ra.AvgDiam / $rc.AvgDiam) }   # C = 1, A = X
     else { $ui.ValR.Text = $dash }
 
     if ($script:Paused) {

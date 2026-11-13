@@ -47,7 +47,8 @@ delete that folder too if you want them gone.
   and used to convert screen distance into inches or millimeters for both sets.
 - Only the **averaged circle** is drawn for each set: the average of the two radii,
   passing through both outside points.
-- **Ratio = C average diameter ÷ A average diameter.**
+- **Ratio C/A** is shown as **1:X** — C is set to 1, and X is the A average diameter
+  divided by the C average diameter.
 
 ## Privacy
 
