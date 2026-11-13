@@ -33,3 +33,7 @@ desktop.ini
 .SynologyWorkingDirectory/
 *.swp
 *.tmp
+
+# Release zips are built locally and uploaded to GitHub Releases, not committed
+release/
+*.zip
