@@ -1,0 +1,35 @@
+# --- C/A Tool .gitignore (edit for the project's stack) ---
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Secrets / keys / local config — never commit
+*.key
+*.pem
+*.env
+.env*
+secrets*
+
+# Databases / data (project decides; default: keep data out of git)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite*
+
+# OS / editor / sync
+.DS_Store
+Thumbs.db
+desktop.ini
+.SynologyWorkingDirectory/
+*.swp
+*.tmp
